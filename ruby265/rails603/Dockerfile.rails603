@@ -1,0 +1,4 @@
+FROM ruby:2.6.5
+
+RUN gem source -r https://rubygems.org/ -a https://gems.ruby-china.com/ \
+    && gem install rails -v '6.0.3' --no-document

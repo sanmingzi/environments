@@ -1,0 +1,67 @@
+version: "3.7"
+
+# docker-machine ssh
+# mkdir /mnt/workspace
+# sudo mount -t vboxsf workspace /mnt/workspace
+
+services:
+  mysql_development:
+    image: mysql:5.7
+    container_name: mysql_development
+    restart: always
+    environment:
+      MYSQL_DATABASE: "mysql_development"
+      MYSQL_ROOT_PASSWORD: "root"
+      # MYSQL_USER: 'development'
+      # MYSQL_PASS: 'development'
+    volumes:
+      - mysql_development:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  # init_db:
+  #   build:
+  #     context: .
+  #     dockerfile: rails_523_ruby_265.Dockerfile
+  #   image: rails:5.2.3-ruby-2.6.5
+  #   depends_on:
+  #     - mysql_development
+  #   environment:
+  #     MYSQL_DATABASE: 'blog_system_development'
+  #     MYSQL_USERNAME: 'root'
+  #     MYSQL_PASSWORD: 'root'
+  #     MYSQL_HOST: 'mysql_development'
+  #     MYSQL_PORT: 3306
+  #   volumes:
+  #     - /c/Users/Public/workspace:/root/workspace
+  #     - bundler:/root/bundler
+  #   working_dir: /root/workspace/blog_system
+  #   command: bundle install --path /root/bundler && rails db:create db:setup
+      
+  rails_523_ruby_265:
+    build:
+      context: .
+      dockerfile: rails_523_ruby_265.Dockerfile
+    image: rails:5.2.3-ruby-2.6.5
+    container_name: rails_523_ruby_265
+    restart: always
+    depends_on:
+      - mysql_development
+      # - init_db
+    environment:
+      MYSQL_DATABASE: 'blog_system_development'
+      MYSQL_USERNAME: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_HOST: 'mysql_development'
+      MYSQL_PORT: 3306
+    volumes:
+      - /c/Users/Public/workspace:/root/workspace
+      - bundler:/root/bundler
+    ports:
+      - "4000:4000"
+    working_dir: /root/workspace
+    command: top -b
+
+volumes:
+  mysql_development:
+  bundler:

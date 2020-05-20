@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  ruby251_rails523:
+    build:
+      context: .
+      dockerfile: Dockerfile.rails523
+    image: windmill_knight/rails:5.2.3-ruby251
+    container_name: ruby251_rails523
+    restart: always
+    volumes:
+      - /mnt/e/workspace:/root/workspace
+      - /mnt/e/vendor/bundle:/root/vendor/bundle
+    working_dir: /root/workspace
+    command: top -b

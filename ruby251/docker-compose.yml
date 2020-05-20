@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  ruby265:
+    build:
+      context: .
+      dockerfile: Dockerfile.ruby251
+    image: windmill_knight/ruby:2.5.1
+    container_name: ruby251
+    restart: always
+    volumes:
+      - /mnt/e/workspace:/root/workspace
+      - /mnt/e/vendor/bundle:/root/vendor/bundle
+    working_dir: /root/workspace
+    command: top -b
+# docker exec -it ruby251 bash
