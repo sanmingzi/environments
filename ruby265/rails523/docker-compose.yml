@@ -1,13 +1,13 @@
 version: "3.3"
 
 services:
-  ruby265:
+  ruby265_rails523:
     build:
       context: .
       dockerfile: Dockerfile.rails523
     image: windmill_knight/rails:5.2.3-ruby265
     container_name: ruby265_rails523
-    restart: always
+    # restart: always
     network_mode: "host"
     volumes:
       - /mnt/e/workspace:/root/workspace

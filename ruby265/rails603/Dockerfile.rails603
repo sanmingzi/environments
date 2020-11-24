@@ -1,4 +1,14 @@
 FROM ruby:2.6.5
 
-RUN gem source -r https://rubygems.org/ -a https://gems.ruby-china.com/ \
-    && gem install rails -v '6.0.3' --no-document
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt update && apt install -y yarn && \
+    gem source -r https://rubygems.org/ -a https://gems.ruby-china.com/ && \
+    gem install rails -v '6.0.3' --no-document
+
+ENV http_proxy "http://127.0.0.1:8118"
+ENV HTTP_PROXY "http://127.0.0.1:8118"
+ENV https_proxy "http://127.0.0.1:8118"
+ENV HTTPS_PROXY "http://127.0.0.1:8118"
+
+RUN apt install -y fish

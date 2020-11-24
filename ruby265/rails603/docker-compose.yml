@@ -1,17 +1,17 @@
-version: "3.3"
+version: "3.4"
 
 services:
   ruby265:
     build:
       context: .
+      network: host
       dockerfile: Dockerfile.rails603
     image: windmill_knight/rails:6.0.3-ruby265
     container_name: ruby265_rails603
     restart: always
     network_mode: "host"
     volumes:
-      - /mnt/e/workspace:/root/workspace
-      - /mnt/e/vendor/bundle:/root/vendor/bundle
+      - /workspace:/root/workspace
       - /home/windmill_knight/.ssh:/root/.ssh
     working_dir: /root/workspace
     command: top -b
