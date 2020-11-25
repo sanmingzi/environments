@@ -11,7 +11,7 @@ services:
     restart: always
     network_mode: "host"
     volumes:
-      - /workspace:/root/workspace
+      - /workspace:/workspace
       - /home/windmill_knight/.ssh:/root/.ssh
-    working_dir: /root/workspace
+    working_dir: /workspace
     command: top -b
