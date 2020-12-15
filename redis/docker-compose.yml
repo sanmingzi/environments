@@ -1,12 +1,13 @@
-version: "3"
+version: "3.4"
 
 services:
-  ruby:
+  redis:
     image: redis
     container_name: redis
+    network_mode: 'host'
+    restart: always
     volumes:
-      # this maybe imposible, because redis container is linux
-      # but my host is wondows
-      # TODO
-      # - d:\workspace:/data/redis
-      - /d/workspace/volumes/volume_redis:/data/volume_redis
+      - redis_development:/data
+
+volumes:
+  redis_development:

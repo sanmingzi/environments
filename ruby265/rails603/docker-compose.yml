@@ -13,5 +13,10 @@ services:
     volumes:
       - /workspace:/workspace
       - /home/windmill_knight/.ssh:/root/.ssh
+    environment:
+      RAILS_SERVE_STATIC_FILES: 'true'
+      SSO_DATABASE_URL: 'mysql2://root:root@127.0.0.1/sso_development'
+      REDIS_CACHE_URL: 'redis://127.0.0.1:6379/0/cache'
+      REDIS_SESSION_URL: 'redis://127.0.0.1:6379/0/session'
     working_dir: /workspace
     command: top -b
