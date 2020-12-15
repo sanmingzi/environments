@@ -7,7 +7,7 @@ services:
     network_mode: 'host'
     restart: always
     volumes:
-      - redis_development:/data
+      - redis_data:/data
 
 volumes:
-  redis_development:
+  redis_data:
