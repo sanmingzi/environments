@@ -1,22 +1,11 @@
 version: "3.4"
 
 services:
-  ruby265_rails603:
+  rails603:
     build:
       context: .
       network: host
-      dockerfile: Dockerfile.rails603
-    image: windmill_knight/rails:6.0.3-ruby265
-    container_name: ruby265_rails603
-    restart: always
+    image: sanmingzi/rails:6.0.3-ruby265-alpine
+    container_name: rails603
     network_mode: "host"
-    volumes:
-      - /workspace:/workspace
-      - /home/windmill_knight/.ssh:/root/.ssh
-    environment:
-      RAILS_SERVE_STATIC_FILES: 'true'
-      SSO_DATABASE_URL: 'mysql2://root:root@127.0.0.1/sso_development'
-      REDIS_CACHE_URL: 'redis://127.0.0.1:6379/0/cache'
-      REDIS_SESSION_URL: 'redis://127.0.0.1:6379/0/session'
-    working_dir: /workspace
-    command: top -b
+    command: /bin/sh -c "top -b"
