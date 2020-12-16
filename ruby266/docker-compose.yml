@@ -1,0 +1,7 @@
+version: "3.4"
+
+services:
+  ruby266:
+    build:
+      context: .
+    image: sanmingzi/ruby:2.6.6-alpine

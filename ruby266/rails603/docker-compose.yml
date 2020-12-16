@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  rails603:
+    build:
+      context: .
+      network: host
+    image: sanmingzi/rails:6.0.3-ruby265-alpine
+    container_name: rails603
+    network_mode: "host"
+    command: /bin/sh -c "top -b"
