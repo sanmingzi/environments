@@ -5,7 +5,7 @@ services:
     build:
       context: .
       network: host
-    image: sanmingzi/rails:6.0.3-ruby265-alpine
+    image: 103.14.34.141:5000/sanmingzi/rails:6.0.3-ruby266-alpine
     container_name: rails603
     network_mode: "host"
     command: /bin/sh -c "top -b"
