@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  chrome:
+    image: 103.14.34.141:5000/selenium/standalone-chrome
+    network_mode: "host"
+    container_name: "chrome"
+    restart: always
+    # environment:
+    #   NODE_MAX_INSTANCES: 10
+    #   NODE_MAX_SESSION: 10
+    #   GRID_MAX_SESSION: 10
+    # volumes:
+    #   - /dev/shm:/dev/shm
