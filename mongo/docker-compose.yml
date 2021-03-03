@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    network_mode: "host"
+    # environment:
+      # MONGO_ROOT_PASSWORD: "root"
+      # MONGO_DATABASE: "MONGO_development"
+      # MONGO_USER: 'development'
+      # MONGO_PASS: 'development'
+    volumes:
+      - mongo_data:/data/db
+    # ports:
+    #   - "27017:27017"
+
+volumes:
+  mongo_data:
