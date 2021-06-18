@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  ruby265_rails525:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    image: zhiming/rails:5.2.5-ruby265
+    container_name: ruby265_rails525
+    restart: always
+    # network_mode: "host"
+    # network_mode: "bridge"
+    volumes:
+      # - /opt/workspace:/root/workspace
+      - /opt/workspace:/opt/workspace:cached
+      # - /mnt/e/vendor/bundle:/root/vendor/bundle
+      # - /home/windmill_knight/.ssh:/root/.ssh
+    working_dir: /opt/workspace
+    ports:
+      - "9000:9000"
+      - "9010:9010"
+      - "9020:9020"
+      - "9030:9030"
+      - "9040:9040"
+      - "9050:9050"
+      - "9060:9060"
+      - "9070:9070"
+      - "9080:9080"
+      - "9090:9090"
+    command: top -b
